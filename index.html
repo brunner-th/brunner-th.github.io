@@ -30,7 +30,7 @@ https://templatemo.com/tm-531-reflux
     <link rel="stylesheet" href="assets/css/lightbox.css" />
   </head>
 
-  <body onLoad = " LoadOnce()">
+  <body>
     <div id="page-wraper">
       <!-- Sidebar Menu -->
       <div class="responsive-nav">
@@ -395,13 +395,22 @@ https://templatemo.com/tm-531-reflux
       });
     </script>
 
-    <script language="JavaScript" >
-      <!-- 
-      function LoadOnce() 
-      { 
-      window.location.reload(); 
-      } 
-      //-->
+    <script type='text/javascript'>
+
+      (function()
+      {
+      if( window.localStorage )
+        {
+          if( !localStorage.getItem('firstLoad') )
+            {
+              localStorage['firstLoad'] = true;
+              window.location.reload();
+            }  
+          else
+            localStorage.removeItem('firstLoad');
+        }
+      })();
+  
     </script>
 
   </body>
