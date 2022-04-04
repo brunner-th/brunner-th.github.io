@@ -400,10 +400,16 @@ https://templatemo.com/tm-531-reflux
     </script>
 
     <script>
+
+      var state = 0;
+
       setTimeout(function(){
       }, 3000); 
 
+      if (state == 0) {
       window.location.reload();
+      var state = 1
+      } 
     </script>
     
 
