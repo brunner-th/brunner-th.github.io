@@ -65,7 +65,7 @@
       itemSelector: ".isotope-item",
       layoutMode: "masonry",
       masonry: {
-        columnWidth: 200
+        columnWidth: 5
       }
     });
   });
