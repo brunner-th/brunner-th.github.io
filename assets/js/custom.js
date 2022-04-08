@@ -60,14 +60,10 @@
       $isotope.isotope({ filter: type });
     };
 
-    //$isotope.imagesLoaded( function(){
     $isotope.isotope({
       itemSelector: ".isotope-item",
       layoutMode: "masonry"
-      
-      
     });
- // });
 
     $(this).on("change", filter);
     filter();
