@@ -63,7 +63,7 @@
     $isotope.imagesLoaded( function(){
     $isotope.isotope({
       itemSelector: ".isotope-item",
-      layoutMode: "masonry"
+      layoutMode: "fitColumns"
     });
   });
 
