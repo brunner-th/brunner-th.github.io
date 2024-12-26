@@ -12,37 +12,9 @@ renderer.setAnimationLoop( animate );
 renderer.setClearColor(0xffffff, 1);
 document.body.appendChild( renderer.domElement );
 
-//const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshStandardMaterial({
-	color: 0x00ff00,  // Green color
-	metalness: 0.8,   // High metallic property for a shiny surface
-	roughness: 0.2,   // Low roughness for smoothness
-	envMapIntensity: 1.0 // Reflects the environment map (if used)
-});
-//const cube = new THREE.Mesh( geometry, material );
-//scene.add( cube );
 
 
-const loader = new STLLoader();
-loader.load('Fan_Shroud_stl.stl', function (geometry) {
-  // Create a material for the STL model
-  const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-
-  // Create a mesh with the loaded geometry and material
-  const mesh = new THREE.Mesh(geometry, material);
-
-  // Optionally, scale and rotate the model if needed
-  mesh.scale.set(0.3, 0.3, 0.3);  // Scale down the model if it's too large
-  mesh.rotation.x = -Math.PI / 2; // Rotate model if necessary
-
-  // Add to the scene
-  //scene.add(mesh);
-});
-
-
-
-
-
+let atomArray = [];
 let posArray = []; // Global variable to store the file content
 let connecArray = [];
 let eigenvecsArray = [];
@@ -85,7 +57,7 @@ fetch(posfilePath)
 		console.log('File content loaded:', connecArray);
 
 		// Now you can call a function to handle the data
-		createBindings(posArray, connecArray);
+		//createBindings(posArray, connecArray);
 	})
 	.catch(error => {
 		console.error('Error fetching the file:', error);
@@ -116,25 +88,40 @@ fetch(posfilePath)
 // Function to create cubes based on dataArray
 function createAtoms(dataArray) {
 	for (let i = 0; i < dataArray.length / 3; i++) {
-		const x = parseFloat(dataArray[i * 3])-10;
-		const y = parseFloat(dataArray[i * 3 + 1])-15;
-		const z = parseFloat(dataArray[i * 3 + 2]);
+		let x = parseFloat(dataArray[i * 3]-15);
+		let y = parseFloat(dataArray[i * 3 + 1]-15);
+		let z = parseFloat(dataArray[i * 3 + 2]);
+
+		const x_max = Math.max(...dataArray.filter((_, i) => i % 3 === 0));
+		const x_min = Math.min(...dataArray.filter((_, i) => i % 3 === 0));
+		const y_max = Math.max(...dataArray.filter((_, i) => i % 3 === 1));
+		const y_min = Math.min(...dataArray.filter((_, i) => i % 3 === 1));
+		const z_max = Math.max(...dataArray.filter((_, i) => i % 3 === 2));
+		const z_min = Math.min(...dataArray.filter((_, i) => i % 3 === 2));
+		const x_mean = (x_max + x_min) / 2;
+		const y_mean = (y_max + y_min) / 2;
+		const z_mean = (z_max + z_min) / 2;
+
+		//x = x - 20;
+		//y = y - 30;
+		//z = z - 20;
 
 		// Create geometry for each position
-		const geometry = new THREE.SphereGeometry(0.3, 15, 10);
+		const geometry = new THREE.SphereGeometry(0.3, 8, 6);
 		const material = new THREE.MeshStandardMaterial({
 			color: 0xC34949,
 			metalness: 0.8,
 			roughness: 0.2,
 			envMapIntensity: 1.0,
 		});
-		const cube = new THREE.Mesh(geometry, material);
+		const atom = new THREE.Mesh(geometry, material);
 
 		// Set position from the array
-		cube.position.set(x, y, z);
+		atom.position.set(x, y, z);
 
 		// Add the cube to the scene
-		scene.add(cube);
+		scene.add(atom);
+		atomArray.push(atom);
 	}
 }
 
@@ -143,12 +130,12 @@ function createBindings(posArray, connecArray) {
     const a = parseInt(connecArray[i * 2]);
     const b = parseInt(connecArray[i * 2 + 1]);
 
-    const x1 = parseFloat(posArray[a * 3]-15);
-    const y1 = parseFloat(posArray[a * 3 + 1]-15);
+    const x1 = parseFloat(posArray[a * 3]);
+    const y1 = parseFloat(posArray[a * 3 + 1]);
     const z1 = parseFloat(posArray[a * 3 + 2]);
 
-    const x2 = parseFloat(posArray[b * 3]-15);
-    const y2 = parseFloat(posArray[b * 3 + 1]-15);
+    const x2 = parseFloat(posArray[b * 3]);
+    const y2 = parseFloat(posArray[b * 3 + 1]);
     const z2 = parseFloat(posArray[b * 3 + 2]);
 
     const points = [];
@@ -169,11 +156,11 @@ camera.position.x = 0;
 camera.position.y = 0;
 camera.position.z = 50;
 
-const ambientLight = new THREE.AmbientLight(0x404040, 10); // Soft white light with lower intensity
+const ambientLight = new THREE.AmbientLight(0x404040, 100); // Soft white light with lower intensity
 scene.add(ambientLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 100); // Bright white light
-pointLight.position.set(5, 5, 5); // Set the position of the light
+const pointLight = new THREE.PointLight(0xffffff, 5000); // Bright white light
+pointLight.position.set(20, 5, 5); // Set the position of the light
 scene.add(pointLight);
 
 
@@ -196,11 +183,11 @@ function animate() {
   time += deltaTime;
 
   
-  scene.children = scene.children.filter((child) => child.type === 'Mesh' || child.type === 'Line' || child.type === 'AxesHelper' || child.type === 'PointLight' || child.type === 'AmbientLight');
+  //scene.children = scene.children.filter((child) => child.type === 'Mesh' || child.type === 'Line' || child.type === 'AxesHelper' || child.type === 'PointLight' || child.type === 'AmbientLight');
   
-  for (let i=0; i<scene.children.length; i++){
-    scene.remove(scene.children[i]);
-  }
+  //for (let i=0; i<scene.children.length; i++){
+  //  scene.remove(scene.children[i]);
+  //}
 
   if (eigenvecs_loaded){
 
@@ -221,33 +208,35 @@ function animate() {
       let y_new = y + dy * Math.sin(time*0.001)*factor;
       let z_new = z + dz * Math.sin(time*0.001)*factor;
 
-      const geometry = new THREE.SphereGeometry(0.3, 6, 4);
-		const material = new THREE.MeshStandardMaterial({
-			color: 0xC34949,
-			metalness: 0.8,
-			roughness: 0.2,
-			envMapIntensity: 1.0,
-		});
-		const cube = new THREE.Mesh(geometry, material);
+	  atomArray[i].position.set(x_new, y_new, z_new);
+
+      //const geometry = new THREE.SphereGeometry(0.3, 6, 4);
+		//const material = new THREE.MeshStandardMaterial({
+		//	color: 0xC34949,
+		//	metalness: 0.8,
+		//	roughness: 0.2,
+		//	envMapIntensity: 1.0,
+		//});
+		//const cube = new THREE.Mesh(geometry, material);
 
 		// Set position from the array
-		cube.position.set(x_new, y_new, z_new);
+		//cube.position.set(x_new, y_new, z_new);
 
 		// Add the cube to the scene
-		scene.add(cube);
+		//scene.add(cube);
     }
 	lastTime = thisTime;
 
 
   }
 
-  const ambientLight = new THREE.AmbientLight(0x404040, 100); // Soft white light with lower intensity
-  scene.add(ambientLight);
-  const pointLight = new THREE.PointLight(0xffffff, 400); // Bright white light
-  pointLight.position.set(5, 5, 5); // Set the position of the light
-  scene.add(pointLight);
-  var axesHelper = new THREE.AxesHelper( 5 );
-scene.add( axesHelper );
+  //const ambientLight = new THREE.AmbientLight(0x404040, 100); // Soft white light with lower intensity
+  //scene.add(ambientLight);
+  //const pointLight = new THREE.PointLight(0xffffff, 400); // Bright white light
+  //pointLight.position.set(5, 5, 5); // Set the position of the light
+  //scene.add(pointLight);
+  //var axesHelper = new THREE.AxesHelper( 5 );
+//scene.add( axesHelper );
 
 	renderer.render( scene, camera );
 
