@@ -119,8 +119,6 @@ scene.add( line );
 
 
 
-
-
 const geometry_earth = new THREE.SphereGeometry( 1, 32, 16 );
 const texture_earth = new THREE.TextureLoader().load('earth_texture.jpeg');
 const material_earth = new THREE.MeshBasicMaterial({
