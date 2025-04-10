@@ -90,7 +90,7 @@
           <div class="col">
             <h1>Thomas Brunner</h1>
             <h3>Computational Engineering Student</h3>
-            <h3>Aeroacoustics Researcher</h3>
+	    <!--<h3>Aeroacoustics Researcher</h3>-->
             <h5>Working at the Graz University of Technology</h5>
             <h5><a href="https://www.tugraz.at/institute/igte/research/scientific-areas/aeroacoustics-and-vibroacoustics/">Aero- & Vibroacoustics group</a></h5>
             <p>E-Mail: thomas.brunner@tugraz.at</p>
@@ -145,61 +145,92 @@
   </div>
 </div>
 
+<div class="container" id="research">
+  <style>
+    .carousel-inner img {
+      max-width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+    }
+  </style>
 
-  <div class="container" id="research">
-    <h1>Research</h1>
-    <p>Here are a few pictures and animations as a showcase of my current research.</p>
-    <div class="row">
-      <div class="col-3">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="v-carousel-tab" data-toggle="pill" href="#v-carousel" role="tab" aria-controls="v-carousel" aria-selected="true">Automotive aeroacoustics</a>
-          <a class="nav-link" id="v-video-en-tab" data-toggle="pill" href="#v-video-en" role="tab" aria-controls="v-video-en" aria-selected="true">FSAI</a>
-          <a class="nav-link" id="v-publis-tab" data-toggle="pill" href="#v-publis" role="tab" aria-controls="v-publis" aria-selected="false">Reduced Order Modeling</a>
-          <a class="nav-link" id="v-bakk-tab" data-toggle="pill" href="#v-bakk" role="tab" aria-controls="v-bakk" aria-selected="false">Bachelor's thesis</a>
-        </div>
+  <h1>Research</h1>
+  <p>Here are a few pictures and animations as a showcase of my current research.</p>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-carousel-tab" data-toggle="pill" href="#v-carousel" role="tab" aria-controls="v-carousel" aria-selected="true">Automotive aeroacoustics</a>
+        <a class="nav-link" id="v-video-en-tab" data-toggle="pill" href="#v-video-en" role="tab" aria-controls="v-video-en" aria-selected="true">FSAI</a>
+        <a class="nav-link" id="v-publis-tab" data-toggle="pill" href="#v-publis" role="tab" aria-controls="v-publis" aria-selected="false">Reduced Order Modeling</a>
+        <a class="nav-link" id="v-bakk-tab" data-toggle="pill" href="#v-bakk" role="tab" aria-controls="v-bakk" aria-selected="false">Bachelor's thesis</a>
       </div>
-
-      <div class="col-9">
-        <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-carousel" role="tabpanel" aria-labelledby="v-carousel-tab">
-            <div id="carouselRibbons" class="carousel slide" data-ride="carousel" data-interval="5000">
-              <ol class="carousel-indicators"></ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active"><img src="Research/Figure_12.jpeg" class="d-block w-100" alt=""></div>
-              </div><a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev"><span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next"><span class="sr-only">Next</span></a>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="v-video-en" role="tabpanel" aria-labelledby="v-video-en-tab">
-            <div class="carousel-item active"><img src="Research/VocalFolds.png" class="d-block w-100" alt=""></div>
-
-          </div>
-          
-          <div class="tab-pane fade " id="v-publis" role="tabpanel" aria-labelledby="v-carousel-tab">
-            <div id="carouselRibbons" class="carousel slide" data-ride="carousel" data-interval="5000">
-              <ol class="carousel-indicators"></ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active"><img src="Research/london_newest.png" class="d-block w-100" alt=""></div>
-                <div class="carousel-item"><img src="Research/M065.gif" class="d-block w-100" alt=""></div>
-              </div><a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev"><span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next"><span class="sr-only">Next</span></a>
-            </div>
-          </div>
-
-          <div class="tab-pane fade " id="v-bakk" role="tabpanel" aria-labelledby="v-bakk-tab">
-            <div id="carouselRibbons" class="carousel slide" data-ride="carousel" data-interval="5000">
-              <ol class="carousel-indicators"></ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active"><img src="Research/Bakk/cnt_pull.gif" class="d-block w-300" alt=""></div>
-                <div class="carousel-item"><img src="Research/Bakk/cnt_closeup.gif" class="d-block w-500" alt=""></div>
-              </div><a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev"><span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next"><span class="sr-only">Next</span></a>
-            </div>
-          </div>
-
-          </div>
-        </div>
-      </div>
-      <p>&nbsp;</p>
     </div>
+
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+
+        <!-- Automotive Aeroacoustics -->
+        <div class="tab-pane fade show active" id="v-carousel" role="tabpanel" aria-labelledby="v-carousel-tab">
+          <div id="carouselRibbons" class="carousel slide" data-ride="carousel" data-interval="5000">
+            <ol class="carousel-indicators"></ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="Research/Figure_12.jpeg" class="d-block" alt="">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselRibbons" role="button" data-slide="prev"><span class="sr-only">Previous</span></a>
+            <a class="carousel-control-next" href="#carouselRibbons" role="button" data-slide="next"><span class="sr-only">Next</span></a>
+          </div>
+        </div>
+
+        <!-- FSAI -->
+        <div class="tab-pane fade" id="v-video-en" role="tabpanel" aria-labelledby="v-video-en-tab">
+          <div class="carousel-item active">
+            <img src="Research/VocalFolds.png" class="d-block" alt="">
+          </div>
+        </div>
+
+        <!-- Reduced Order Modeling -->
+        <div class="tab-pane fade" id="v-publis" role="tabpanel" aria-labelledby="v-publis-tab">
+          <div class="carousel slide" data-ride="carousel" data-interval="5000">
+            <ol class="carousel-indicators"></ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="Research/london_newest.png" class="d-block" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="Research/M065.gif" class="d-block" alt="">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselRibbons" role="button" data-slide="prev"><span class="sr-only">Previous</span></a>
+            <a class="carousel-control-next" href="#carouselRibbons" role="button" data-slide="next"><span class="sr-only">Next</span></a>
+          </div>
+        </div>
+
+        <!-- Bachelor's Thesis -->
+        <div class="tab-pane fade" id="v-bakk" role="tabpanel" aria-labelledby="v-bakk-tab">
+          <div class="carousel slide" data-ride="carousel" data-interval="5000">
+            <ol class="carousel-indicators"></ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="Research/Bakk/cnt_pull.gif" class="d-block" style="width: 300px; max-width: 100%;" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="Research/Bakk/cnt_closeup.gif" class="d-block" style="width: 500px; max-width: 100%;" alt="">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselRibbons" role="button" data-slide="prev"><span class="sr-only">Previous</span></a>
+            <a class="carousel-control-next" href="#carouselRibbons" role="button" data-slide="next"><span class="sr-only">Next</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <p>&nbsp;</p>
+</div>
     
     <div class="container" id="teaching">
     <h1>Teaching</h1>
