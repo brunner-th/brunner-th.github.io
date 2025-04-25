@@ -38,6 +38,15 @@
         content: url("Images/tugraz.png");
     }
 
+    .responsive-text {
+    width: 90%;
+    max-width: 800px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0 auto;
+    display: block;
+  }
+
 </style>
 
 </head>
@@ -73,13 +82,19 @@
     </div>
   </nav>
 
+  <div class="container" style="margin-top: 100px;">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>   </h1>
+ 
+
   <div class="container">
 
-    <h1>This is some example text</h1>
-    <p>Here's a cool GIF below:</p>
-    <img src="poster_flow.gif" alt="Cool">
-    <p>Here's a cool GIF below:</p>
-    <img src="poster_press.gif" alt="Cool GIF">
+    <h1 class="responsive-text">These are the animations showcasing the aeroacoustic feedback mechanism occuring at an automotive cavity</h1>
+    <p class="responsive-text">The animation below shows the vorticity field with added velocity field vectors and the corresponding pressure field.</p>
+    <img src="poster_flow.gif" style="width: 90%; height: auto; display: block; margin: 0 auto;" alt="Cool">
+    <p class="responsive-text">The pressure fluctuations inside the cavity lead to emission of acoustic waves as seen in the following animations.</p>
+    <img src="poster_press.gif" style="width: 90%; height: auto; display: block; margin: 0 auto;" alt="Cool GIF">
 
   </div>
 
